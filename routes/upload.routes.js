@@ -1,11 +1,10 @@
 	const express = require('express');
 	const upload = require('../middleware/upload');
+	const Post = require('../models/posts');
 	const router = express.Router();
     require('dotenv').config();
 
-    const PORT = process.env.PORT;
-
-	router.post('/', upload.single('file'), (req, res) => {
+	router.post('/', upload.single('file'), async(req, res) => {
 	    // req.file is the `file` file
 	    if (req.file === undefined) {
 
@@ -13,11 +12,14 @@
 	            "message": "no file selected"
 	        });
 	    } else {
-	        console.log('req.file', req.file);
-	        const imgUrl = `http://localhost:${PORT}/download/${req.file.filename}`;
-	        return res.status(201).send({
-	            url: imgUrl
-	        });
+			console.log('req.body', req.body);
+			const newPost = new Post({
+				title: req.body.title,
+				location: req.body.location,
+				image_id: req.file.filename
+			})
+			await newPost.save();
+			return res.send(newPost);
 	    }
 	})
 

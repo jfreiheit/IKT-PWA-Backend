@@ -18,8 +18,10 @@
 	        return {
 	            bucketName: 'posts',
 	            filename: `${Date.now()}-jf-${file.originalname}`,
+				request: req
 	        };
 	    },
-	});
+	})
+
 
 	module.exports = multer({ storage });

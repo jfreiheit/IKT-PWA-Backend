@@ -3,7 +3,7 @@
 	const schema = new mongoose.Schema({
 	    title: String,
 	    location: String,
-	    image_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+	    image_id: String
 	});
 
 	module.exports = mongoose.model('Post', schema);
