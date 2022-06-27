@@ -4,6 +4,8 @@ const postsRoutes = require('./routes/posts.routes');
 const uploadRoutes = require('./routes/upload.routes');
 const downloadRoute = require('./routes/download.routes');
 const deleteRoute = require('./routes/delete.routes');
+const subscriptionRoute = require('./routes/subscription.routes');
+
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -15,6 +17,7 @@ app.use('/posts', postsRoutes);
 app.use('/image', uploadRoutes);
 app.use('/download', downloadRoute);
 app.use('/delete', deleteRoute);
+app.use('/subscription', subscriptionRoute);
 
 app.listen(process.env.PORT, (error) => {
 	if (error) {
