@@ -1,3 +1,7 @@
+node_modules/
+.env
 package-lock.json
-node_modules
+assets/*
+*.pem
+.DS_Store
 
